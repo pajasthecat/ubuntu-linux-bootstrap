@@ -16,8 +16,8 @@ By no means exhastive and has a .NET flavour to it, run as root, have a coffee:
 * Docker
 * Visual Studio Code
 * .NET Core
-* Go
-* Node/npm/yarn
+* F#
+* Node/npm
 
 Reminders about git setup etc
 
@@ -36,7 +36,3 @@ If you are running this in a VM of sorts you may need to disable the GPU when ru
     code --disable-gpu
 
 > https://code.visualstudio.com/docs/supporting/FAQ#_vs-code-is-blank
-
-### Go
-
-If using VS Code (assuming you installed the suggested extensions such as `ms-vscode.go`) run the helper command "install all tools" to get the rest of the Golang goodies.
