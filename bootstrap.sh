@@ -9,8 +9,6 @@ fi
 # https://www.microsoft.com/net/core#linuxubuntu
 # https://code.visualstudio.com/docs/setup/linux
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-# https://yarnpkg.com/lang/en/docs/install/
-# https://golang.org/doc/install#tarball
 
 echo "Update and upgrade all the things..."
 
@@ -44,6 +42,15 @@ add-apt-repository universe
 apt-get update -y
 apt-get install -y dotnet-sdk-3.1
 
+# F# setup
+sudo apt install gnupg ca-certificates
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt update
+
+sudo apt-get update
+sudo apt-get install fsharp
+
 # VS Code setup - https://code.visualstudio.com/docs/setup/linux
 sudo snap install --classic code
 
@@ -53,20 +60,6 @@ apt-get install -y nodejs
 
 # build tools
 apt-get install -y gcc g++ make
-
-# Yarn setup - https://yarnpkg.com/lang/en/docs/install/#debian-stable
-curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
-apt-get update -y
-apt install yarn -y
-
-# Go
-VERSION=1.13.4
-OS=linux
-ARCH=amd64
-wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz -O /tmp/go$VERSION.$OS-$ARCH.tar.gz
-tar -C /usr/local -xzf /tmp/go$VERSION.$OS-$ARCH.tar.gz
 
 echo '
 export PATH=$PATH:/usr/local/go/bin
@@ -81,10 +74,15 @@ cat << EOF
 
 # now....
 
-code --install-extension ms-vscode.csharp
-code --install-extension ms-vscode.go
 code --install-extension dbaeumer.vscode-eslint
-code --install-extension HookyQR.beautify
+code --install-extension Ionide.Ionide-FAKE
+code --install-extension Ionide.Ionide-fsharp
+code --install-extension Ionide.Ionide-Paket
+code --install-extension jchannon.csharpextensions
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-vscode.csharp
+code --install-extension wesbos.theme-cobalt2
+
 code --list-extensions
 
 git config --global user.email "you@example.com"
