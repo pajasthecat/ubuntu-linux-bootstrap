@@ -82,6 +82,7 @@ code --install-extension jchannon.csharpextensions
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension ms-vscode.csharp
 code --install-extension wesbos.theme-cobalt2
+code --install-extension dsznajder.es7-react-js-snippet
 
 code --list-extensions
 
